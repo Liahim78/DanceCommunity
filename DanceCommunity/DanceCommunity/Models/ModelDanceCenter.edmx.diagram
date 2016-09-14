@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bea1e3cc214243c3873321f7856250df" Name="Diagram1" ZoomLevel="102">
+        <EntityTypeShape EntityType="CommunityBDModel.DanceCenter" Width="1.5" PointX="10" PointY="2.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.Feature" Width="1.5" PointX="11.125" PointY="4.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.Journal" Width="1.5" PointX="12.5" PointY="2.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.Meeting" Width="1.5" PointX="10.875" PointY="5.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.School" Width="1.5" PointX="10" PointY="3.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.Subscribe" Width="1.5" PointX="14.75" PointY="4.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.Team" Width="1.5" PointX="8.375" PointY="6.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.Timetable" Width="1.5" PointX="9.125" PointY="5" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.Training" Width="1.5" PointX="9.25" PointY="2.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.User" Width="1.5" PointX="13" PointY="4.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.UserMeeting" Width="1.5" PointX="13.5" PointY="5.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.UserSchool" Width="1.5" PointX="13.75" PointY="3.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.UserTeam" Width="1.5" PointX="12.625" PointY="6.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="CommunityBDModel.UserTimetable" Width="1.5" PointX="11.375" PointY="5.125" IsExpanded="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_School_DanceCenter" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_Feature_Meeting" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_Feature_School" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_Feature_Team" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_Feature_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_Journal_Training" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_Journal_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_Timetable_Meeting" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_UserMeeting_Meeting" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_Timetable_School" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_UserSchool_Shool" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_Subscribe_UserOnWhom" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_Subscribe_UserWho" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="CommunityBDModel.FK_Timetable_Team" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_UserTeam_Team" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_Training_Timetable" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_UserTimetable_Timetable" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_UserMeeting_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_UserSchool_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_UserTeam_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CommunityBDModel.FK_UserTimetable_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

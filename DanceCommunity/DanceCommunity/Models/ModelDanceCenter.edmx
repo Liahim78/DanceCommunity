@@ -1,0 +1,1252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CommunityBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DanceCenter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Info" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdSchool" Type="int" />
+          <Property Name="IdTeam" Type="int" />
+          <Property Name="IdMeeting" Type="int" />
+          <Property Name="UrlVideoContent" Type="nvarchar(max)" />
+          <Property Name="UrlPhotoContent" Type="nvarchar(max)" />
+          <Property Name="Private/Public" Type="bit" Nullable="false" />
+          <Property Name="TypeNew" Type="bit" Nullable="false" />
+          <Property Name="IdNew" Type="int" />
+          <Property Name="Style" Type="nvarchar(max)" />
+          <Property Name="TypeOfStyle" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdTraining" Type="int" Nullable="false" />
+          <Property Name="Visit" Type="bit" Nullable="false" />
+          <Property Name="Protect" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Meeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Adress" Type="nvarchar(max)" />
+          <Property Name="Info" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Stile" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Adress" Type="nvarchar(max)" />
+          <Property Name="IdDanceCentre" Type="int" Nullable="false" />
+          <Property Name="Links" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Subscribe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUserOnWhom" Type="int" Nullable="false" />
+          <Property Name="IdUserWho" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Stile" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Info" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Timetable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSchool" Type="int" />
+          <Property Name="Stile" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdMeeting" Type="int" />
+          <Property Name="IdTeam" Type="int" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTimetable" Type="int" Nullable="false" />
+          <Property Name="TimeStart" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="TimeEnd" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Nick" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Stiles" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Info" Type="nvarchar(max)" />
+          <Property Name="Birthday" Type="datetime2" Precision="7" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="email" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserMeeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdMeeting" Type="int" Nullable="false" />
+          <Property Name="Type" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserSchool">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdSchool" Type="int" Nullable="false" />
+          <Property Name="Type" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdTeam" Type="int" Nullable="false" />
+          <Property Name="Type" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserTimetable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdTimetable" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Feature_Meeting">
+          <End Role="Meeting" Type="Self.Meeting" Multiplicity="0..1" />
+          <End Role="Feature" Type="Self.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meeting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="IdMeeting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feature_School">
+          <End Role="School" Type="Self.School" Multiplicity="0..1" />
+          <End Role="Feature" Type="Self.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="IdSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feature_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Feature" Type="Self.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="IdTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feature_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Feature" Type="Self.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journal_Training">
+          <End Role="Training" Type="Self.Training" Multiplicity="1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Training">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="IdTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journal_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_School_DanceCenter">
+          <End Role="DanceCenter" Type="Self.DanceCenter" Multiplicity="1" />
+          <End Role="School" Type="Self.School" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanceCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="School">
+              <PropertyRef Name="IdDanceCentre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribe_UserOnWhom">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subscribe">
+              <PropertyRef Name="IdUserOnWhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribe_UserWho">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subscribe">
+              <PropertyRef Name="IdUserWho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetable_Meeting">
+          <End Role="Meeting" Type="Self.Meeting" Multiplicity="0..1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meeting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="IdMeeting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetable_School">
+          <End Role="School" Type="Self.School" Multiplicity="0..1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="IdSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetable_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="IdTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Training_Timetable">
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timetable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Training">
+              <PropertyRef Name="IdTimetable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMeeting_Meeting">
+          <End Role="Meeting" Type="Self.Meeting" Multiplicity="1" />
+          <End Role="UserMeeting" Type="Self.UserMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meeting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMeeting">
+              <PropertyRef Name="IdMeeting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMeeting_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserMeeting" Type="Self.UserMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMeeting">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSchool_Shool">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="UserSchool" Type="Self.UserSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSchool">
+              <PropertyRef Name="IdSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSchool_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserSchool" Type="Self.UserSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSchool">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTeam_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="UserTeam" Type="Self.UserTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTeam">
+              <PropertyRef Name="IdTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTeam_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserTeam" Type="Self.UserTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTeam">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTimetable_Timetable">
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
+          <End Role="UserTimetable" Type="Self.UserTimetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timetable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTimetable">
+              <PropertyRef Name="IdTimetable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTimetable_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserTimetable" Type="Self.UserTimetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTimetable">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CommunityBDModelStoreContainer">
+          <EntitySet Name="DanceCenter" EntityType="Self.DanceCenter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feature" EntityType="Self.Feature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Journal" EntityType="Self.Journal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meeting" EntityType="Self.Meeting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="School" EntityType="Self.School" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscribe" EntityType="Self.Subscribe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Timetable" EntityType="Self.Timetable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Training" EntityType="Self.Training" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMeeting" EntityType="Self.UserMeeting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSchool" EntityType="Self.UserSchool" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTeam" EntityType="Self.UserTeam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTimetable" EntityType="Self.UserTimetable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Feature_Meeting" Association="Self.FK_Feature_Meeting">
+            <End Role="Meeting" EntitySet="Meeting" />
+            <End Role="Feature" EntitySet="Feature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feature_School" Association="Self.FK_Feature_School">
+            <End Role="School" EntitySet="School" />
+            <End Role="Feature" EntitySet="Feature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feature_Team" Association="Self.FK_Feature_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Feature" EntitySet="Feature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feature_User" Association="Self.FK_Feature_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Feature" EntitySet="Feature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journal_Training" Association="Self.FK_Journal_Training">
+            <End Role="Training" EntitySet="Training" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journal_User" Association="Self.FK_Journal_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_School_DanceCenter" Association="Self.FK_School_DanceCenter">
+            <End Role="DanceCenter" EntitySet="DanceCenter" />
+            <End Role="School" EntitySet="School" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribe_UserOnWhom" Association="Self.FK_Subscribe_UserOnWhom">
+            <End Role="User" EntitySet="User" />
+            <End Role="Subscribe" EntitySet="Subscribe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribe_UserWho" Association="Self.FK_Subscribe_UserWho">
+            <End Role="User" EntitySet="User" />
+            <End Role="Subscribe" EntitySet="Subscribe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetable_Meeting" Association="Self.FK_Timetable_Meeting">
+            <End Role="Meeting" EntitySet="Meeting" />
+            <End Role="Timetable" EntitySet="Timetable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetable_School" Association="Self.FK_Timetable_School">
+            <End Role="School" EntitySet="School" />
+            <End Role="Timetable" EntitySet="Timetable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetable_Team" Association="Self.FK_Timetable_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Timetable" EntitySet="Timetable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Training_Timetable" Association="Self.FK_Training_Timetable">
+            <End Role="Timetable" EntitySet="Timetable" />
+            <End Role="Training" EntitySet="Training" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMeeting_Meeting" Association="Self.FK_UserMeeting_Meeting">
+            <End Role="Meeting" EntitySet="Meeting" />
+            <End Role="UserMeeting" EntitySet="UserMeeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMeeting_User" Association="Self.FK_UserMeeting_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserMeeting" EntitySet="UserMeeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSchool_Shool" Association="Self.FK_UserSchool_Shool">
+            <End Role="School" EntitySet="School" />
+            <End Role="UserSchool" EntitySet="UserSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSchool_User" Association="Self.FK_UserSchool_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserSchool" EntitySet="UserSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTeam_Team" Association="Self.FK_UserTeam_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="UserTeam" EntitySet="UserTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTeam_User" Association="Self.FK_UserTeam_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserTeam" EntitySet="UserTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTimetable_Timetable" Association="Self.FK_UserTimetable_Timetable">
+            <End Role="Timetable" EntitySet="Timetable" />
+            <End Role="UserTimetable" EntitySet="UserTimetable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTimetable_User" Association="Self.FK_UserTimetable_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserTimetable" EntitySet="UserTimetable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CommunityBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DanceCenter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Schools" Relationship="Self.FK_School_DanceCenter" FromRole="DanceCenter" ToRole="School" />
+        </EntityType>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdSchool" Type="Int32" />
+          <Property Name="IdTeam" Type="Int32" />
+          <Property Name="IdMeeting" Type="Int32" />
+          <Property Name="UrlVideoContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UrlPhotoContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Private_Public" Type="Boolean" Nullable="false" />
+          <Property Name="TypeNew" Type="Boolean" Nullable="false" />
+          <Property Name="IdNew" Type="Int32" />
+          <Property Name="Style" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeOfStyle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Meeting" Relationship="Self.FK_Feature_Meeting" FromRole="Feature" ToRole="Meeting" />
+          <NavigationProperty Name="School" Relationship="Self.FK_Feature_School" FromRole="Feature" ToRole="School" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_Feature_Team" FromRole="Feature" ToRole="Team" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Feature_User" FromRole="Feature" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdTraining" Type="Int32" Nullable="false" />
+          <Property Name="Visit" Type="Boolean" Nullable="false" />
+          <Property Name="Protect" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Training" Relationship="Self.FK_Journal_Training" FromRole="Journal" ToRole="Training" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Journal_User" FromRole="Journal" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Meeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Features" Relationship="Self.FK_Feature_Meeting" FromRole="Meeting" ToRole="Feature" />
+          <NavigationProperty Name="Timetables" Relationship="Self.FK_Timetable_Meeting" FromRole="Meeting" ToRole="Timetable" />
+          <NavigationProperty Name="UserMeetings" Relationship="Self.FK_UserMeeting_Meeting" FromRole="Meeting" ToRole="UserMeeting" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Stile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdDanceCentre" Type="Int32" Nullable="false" />
+          <Property Name="Links" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DanceCenter" Relationship="Self.FK_School_DanceCenter" FromRole="School" ToRole="DanceCenter" />
+          <NavigationProperty Name="Features" Relationship="Self.FK_Feature_School" FromRole="School" ToRole="Feature" />
+          <NavigationProperty Name="Timetables" Relationship="Self.FK_Timetable_School" FromRole="School" ToRole="Timetable" />
+          <NavigationProperty Name="UserSchools" Relationship="Self.FK_UserSchool_Shool" FromRole="School" ToRole="UserSchool" />
+        </EntityType>
+        <EntityType Name="Subscribe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUserOnWhom" Type="Int32" Nullable="false" />
+          <Property Name="IdUserWho" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Subscribe_UserOnWhom" FromRole="Subscribe" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Subscribe_UserWho" FromRole="Subscribe" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Stile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Features" Relationship="Self.FK_Feature_Team" FromRole="Team" ToRole="Feature" />
+          <NavigationProperty Name="Timetables" Relationship="Self.FK_Timetable_Team" FromRole="Team" ToRole="Timetable" />
+          <NavigationProperty Name="UserTeams" Relationship="Self.FK_UserTeam_Team" FromRole="Team" ToRole="UserTeam" />
+        </EntityType>
+        <EntityType Name="Timetable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSchool" Type="Int32" />
+          <Property Name="Stile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdMeeting" Type="Int32" />
+          <Property Name="IdTeam" Type="Int32" />
+          <NavigationProperty Name="Meeting" Relationship="Self.FK_Timetable_Meeting" FromRole="Timetable" ToRole="Meeting" />
+          <NavigationProperty Name="School" Relationship="Self.FK_Timetable_School" FromRole="Timetable" ToRole="School" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_Timetable_Team" FromRole="Timetable" ToRole="Team" />
+          <NavigationProperty Name="Trainings" Relationship="Self.FK_Training_Timetable" FromRole="Timetable" ToRole="Training" />
+          <NavigationProperty Name="UserTimetables" Relationship="Self.FK_UserTimetable_Timetable" FromRole="Timetable" ToRole="UserTimetable" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTimetable" Type="Int32" Nullable="false" />
+          <Property Name="TimeStart" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="TimeEnd" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Journals" Relationship="Self.FK_Journal_Training" FromRole="Training" ToRole="Journal" />
+          <NavigationProperty Name="Timetable" Relationship="Self.FK_Training_Timetable" FromRole="Training" ToRole="Timetable" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nick" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Stiles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="7" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Features" Relationship="Self.FK_Feature_User" FromRole="User" ToRole="Feature" />
+          <NavigationProperty Name="Journals" Relationship="Self.FK_Journal_User" FromRole="User" ToRole="Journal" />
+          <NavigationProperty Name="Subscribes" Relationship="Self.FK_Subscribe_UserOnWhom" FromRole="User" ToRole="Subscribe" />
+          <NavigationProperty Name="Subscribes1" Relationship="Self.FK_Subscribe_UserWho" FromRole="User" ToRole="Subscribe" />
+          <NavigationProperty Name="UserMeetings" Relationship="Self.FK_UserMeeting_User" FromRole="User" ToRole="UserMeeting" />
+          <NavigationProperty Name="UserSchools" Relationship="Self.FK_UserSchool_User" FromRole="User" ToRole="UserSchool" />
+          <NavigationProperty Name="UserTeams" Relationship="Self.FK_UserTeam_User" FromRole="User" ToRole="UserTeam" />
+          <NavigationProperty Name="UserTimetables" Relationship="Self.FK_UserTimetable_User" FromRole="User" ToRole="UserTimetable" />
+        </EntityType>
+        <EntityType Name="UserMeeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdMeeting" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Boolean" />
+          <NavigationProperty Name="Meeting" Relationship="Self.FK_UserMeeting_Meeting" FromRole="UserMeeting" ToRole="Meeting" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserMeeting_User" FromRole="UserMeeting" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserSchool">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdSchool" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Boolean" />
+          <NavigationProperty Name="School" Relationship="Self.FK_UserSchool_Shool" FromRole="UserSchool" ToRole="School" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserSchool_User" FromRole="UserSchool" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdTeam" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Boolean" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_UserTeam_Team" FromRole="UserTeam" ToRole="Team" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserTeam_User" FromRole="UserTeam" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserTimetable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdTimetable" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Timetable" Relationship="Self.FK_UserTimetable_Timetable" FromRole="UserTimetable" ToRole="Timetable" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserTimetable_User" FromRole="UserTimetable" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_School_DanceCenter">
+          <End Role="DanceCenter" Type="Self.DanceCenter" Multiplicity="1" />
+          <End Role="School" Type="Self.School" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanceCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="School">
+              <PropertyRef Name="IdDanceCentre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feature_Meeting">
+          <End Role="Meeting" Type="Self.Meeting" Multiplicity="0..1" />
+          <End Role="Feature" Type="Self.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meeting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="IdMeeting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feature_School">
+          <End Role="School" Type="Self.School" Multiplicity="0..1" />
+          <End Role="Feature" Type="Self.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="IdSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feature_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Feature" Type="Self.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="IdTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feature_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Feature" Type="Self.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journal_Training">
+          <End Role="Training" Type="Self.Training" Multiplicity="1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Training">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="IdTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journal_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetable_Meeting">
+          <End Role="Meeting" Type="Self.Meeting" Multiplicity="0..1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meeting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="IdMeeting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMeeting_Meeting">
+          <End Role="Meeting" Type="Self.Meeting" Multiplicity="1" />
+          <End Role="UserMeeting" Type="Self.UserMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meeting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMeeting">
+              <PropertyRef Name="IdMeeting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetable_School">
+          <End Role="School" Type="Self.School" Multiplicity="0..1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="IdSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSchool_Shool">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="UserSchool" Type="Self.UserSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSchool">
+              <PropertyRef Name="IdSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribe_UserOnWhom">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subscribe">
+              <PropertyRef Name="IdUserOnWhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribe_UserWho">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subscribe">
+              <PropertyRef Name="IdUserWho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetable_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="IdTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTeam_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="UserTeam" Type="Self.UserTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTeam">
+              <PropertyRef Name="IdTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Training_Timetable">
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timetable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Training">
+              <PropertyRef Name="IdTimetable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTimetable_Timetable">
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
+          <End Role="UserTimetable" Type="Self.UserTimetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timetable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTimetable">
+              <PropertyRef Name="IdTimetable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMeeting_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserMeeting" Type="Self.UserMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMeeting">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSchool_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserSchool" Type="Self.UserSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSchool">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTeam_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserTeam" Type="Self.UserTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTeam">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTimetable_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserTimetable" Type="Self.UserTimetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTimetable">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CommunityBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DanceCenters" EntityType="Self.DanceCenter" />
+          <EntitySet Name="Features" EntityType="Self.Feature" />
+          <EntitySet Name="Journals" EntityType="Self.Journal" />
+          <EntitySet Name="Meetings" EntityType="Self.Meeting" />
+          <EntitySet Name="Schools" EntityType="Self.School" />
+          <EntitySet Name="Subscribes" EntityType="Self.Subscribe" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <EntitySet Name="Timetables" EntityType="Self.Timetable" />
+          <EntitySet Name="Trainings" EntityType="Self.Training" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserMeetings" EntityType="Self.UserMeeting" />
+          <EntitySet Name="UserSchools" EntityType="Self.UserSchool" />
+          <EntitySet Name="UserTeams" EntityType="Self.UserTeam" />
+          <EntitySet Name="UserTimetables" EntityType="Self.UserTimetable" />
+          <AssociationSet Name="FK_School_DanceCenter" Association="Self.FK_School_DanceCenter">
+            <End Role="DanceCenter" EntitySet="DanceCenters" />
+            <End Role="School" EntitySet="Schools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feature_Meeting" Association="Self.FK_Feature_Meeting">
+            <End Role="Meeting" EntitySet="Meetings" />
+            <End Role="Feature" EntitySet="Features" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feature_School" Association="Self.FK_Feature_School">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Feature" EntitySet="Features" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feature_Team" Association="Self.FK_Feature_Team">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Feature" EntitySet="Features" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feature_User" Association="Self.FK_Feature_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Feature" EntitySet="Features" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journal_Training" Association="Self.FK_Journal_Training">
+            <End Role="Training" EntitySet="Trainings" />
+            <End Role="Journal" EntitySet="Journals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journal_User" Association="Self.FK_Journal_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Journal" EntitySet="Journals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetable_Meeting" Association="Self.FK_Timetable_Meeting">
+            <End Role="Meeting" EntitySet="Meetings" />
+            <End Role="Timetable" EntitySet="Timetables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMeeting_Meeting" Association="Self.FK_UserMeeting_Meeting">
+            <End Role="Meeting" EntitySet="Meetings" />
+            <End Role="UserMeeting" EntitySet="UserMeetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetable_School" Association="Self.FK_Timetable_School">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Timetable" EntitySet="Timetables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSchool_Shool" Association="Self.FK_UserSchool_Shool">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="UserSchool" EntitySet="UserSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribe_UserOnWhom" Association="Self.FK_Subscribe_UserOnWhom">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Subscribe" EntitySet="Subscribes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribe_UserWho" Association="Self.FK_Subscribe_UserWho">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Subscribe" EntitySet="Subscribes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetable_Team" Association="Self.FK_Timetable_Team">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Timetable" EntitySet="Timetables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTeam_Team" Association="Self.FK_UserTeam_Team">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="UserTeam" EntitySet="UserTeams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Training_Timetable" Association="Self.FK_Training_Timetable">
+            <End Role="Timetable" EntitySet="Timetables" />
+            <End Role="Training" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTimetable_Timetable" Association="Self.FK_UserTimetable_Timetable">
+            <End Role="Timetable" EntitySet="Timetables" />
+            <End Role="UserTimetable" EntitySet="UserTimetables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMeeting_User" Association="Self.FK_UserMeeting_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserMeeting" EntitySet="UserMeetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSchool_User" Association="Self.FK_UserSchool_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserSchool" EntitySet="UserSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTeam_User" Association="Self.FK_UserTeam_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserTeam" EntitySet="UserTeams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTimetable_User" Association="Self.FK_UserTimetable_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserTimetable" EntitySet="UserTimetables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CommunityBDModelStoreContainer" CdmEntityContainer="CommunityBDEntities">
+          <EntitySetMapping Name="DanceCenters">
+            <EntityTypeMapping TypeName="CommunityBDModel.DanceCenter">
+              <MappingFragment StoreEntitySet="DanceCenter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Features">
+            <EntityTypeMapping TypeName="CommunityBDModel.Feature">
+              <MappingFragment StoreEntitySet="Feature">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdSchool" ColumnName="IdSchool" />
+                <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
+                <ScalarProperty Name="IdMeeting" ColumnName="IdMeeting" />
+                <ScalarProperty Name="UrlVideoContent" ColumnName="UrlVideoContent" />
+                <ScalarProperty Name="UrlPhotoContent" ColumnName="UrlPhotoContent" />
+                <ScalarProperty Name="Private_Public" ColumnName="Private/Public" />
+                <ScalarProperty Name="TypeNew" ColumnName="TypeNew" />
+                <ScalarProperty Name="IdNew" ColumnName="IdNew" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="TypeOfStyle" ColumnName="TypeOfStyle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Journals">
+            <EntityTypeMapping TypeName="CommunityBDModel.Journal">
+              <MappingFragment StoreEntitySet="Journal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdTraining" ColumnName="IdTraining" />
+                <ScalarProperty Name="Visit" ColumnName="Visit" />
+                <ScalarProperty Name="Protect" ColumnName="Protect" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meetings">
+            <EntityTypeMapping TypeName="CommunityBDModel.Meeting">
+              <MappingFragment StoreEntitySet="Meeting">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schools">
+            <EntityTypeMapping TypeName="CommunityBDModel.School">
+              <MappingFragment StoreEntitySet="School">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Stile" ColumnName="Stile" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="IdDanceCentre" ColumnName="IdDanceCentre" />
+                <ScalarProperty Name="Links" ColumnName="Links" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscribes">
+            <EntityTypeMapping TypeName="CommunityBDModel.Subscribe">
+              <MappingFragment StoreEntitySet="Subscribe">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUserOnWhom" ColumnName="IdUserOnWhom" />
+                <ScalarProperty Name="IdUserWho" ColumnName="IdUserWho" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="CommunityBDModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Stile" ColumnName="Stile" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timetables">
+            <EntityTypeMapping TypeName="CommunityBDModel.Timetable">
+              <MappingFragment StoreEntitySet="Timetable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdSchool" ColumnName="IdSchool" />
+                <ScalarProperty Name="Stile" ColumnName="Stile" />
+                <ScalarProperty Name="IdMeeting" ColumnName="IdMeeting" />
+                <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trainings">
+            <EntityTypeMapping TypeName="CommunityBDModel.Training">
+              <MappingFragment StoreEntitySet="Training">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdTimetable" ColumnName="IdTimetable" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CommunityBDModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Nick" ColumnName="Nick" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Stiles" ColumnName="Stiles" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMeetings">
+            <EntityTypeMapping TypeName="CommunityBDModel.UserMeeting">
+              <MappingFragment StoreEntitySet="UserMeeting">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdMeeting" ColumnName="IdMeeting" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSchools">
+            <EntityTypeMapping TypeName="CommunityBDModel.UserSchool">
+              <MappingFragment StoreEntitySet="UserSchool">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdSchool" ColumnName="IdSchool" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTeams">
+            <EntityTypeMapping TypeName="CommunityBDModel.UserTeam">
+              <MappingFragment StoreEntitySet="UserTeam">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTimetables">
+            <EntityTypeMapping TypeName="CommunityBDModel.UserTimetable">
+              <MappingFragment StoreEntitySet="UserTimetable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdTimetable" ColumnName="IdTimetable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
